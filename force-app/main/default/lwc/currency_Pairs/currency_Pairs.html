@@ -1,0 +1,32 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-var-m-top_medium slds-var-m-bottom_large slds-var-m-left_medium slds-var-m-right_medium">
+            <div class="slds-size_1-of-2">
+                <h1 class="headerstyle slds-text-align_left">Currency Pairs</h1>
+            </div>
+            <div class="slds-size_1-of-2">
+                <div class="slds-text-align_right">
+                    <lightning-button variant="neutral" label="Refresh" onclick={refresh}></lightning-button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-var-m-left_medium slds-var-m-right_medium">
+            <table>
+                <template for:each={ratesData} for:item="row">
+                    <tr key={row.key}>
+                        <template for:each={row.value} for:item="pair">
+                            <td key={pair.key}>
+                                <div class="slds-text-align_center slds-border_top slds-border_bottom slds-border_left slds-border_right">
+                                    <div class="cellstyle slds-var-m-top_x-small slds-var-m-bottom_x-small slds-var-m-left_x-small slds-var-m-right_x-small">
+                                        <div>{base} - {pair.key}</div>
+                                        <div>{pair.value}</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </template>
+                    </tr>
+                </template>
+            </table>
+        </div>
+    </lightning-card>
+</template>
